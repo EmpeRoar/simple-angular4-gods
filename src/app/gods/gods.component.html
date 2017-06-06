@@ -1,0 +1,9 @@
+<p>
+ [{{selectedGod.name}}]  <br/>
+ {{selectedGod.power}}
+</p>
+
+
+
+<app-god-item *ngFor="let god of gods" [iGod]="god" (godClicked)="handleGodClicked($event)">
+</app-god-item>
