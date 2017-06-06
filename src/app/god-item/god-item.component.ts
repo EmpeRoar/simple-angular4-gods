@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild  } from '@angular/core';
+import { GotDetailComponent } from '../got-detail/got-detail.component';
 @Component({
   selector: 'app-god-item',
   templateUrl: './god-item.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class GodItemComponent implements OnInit {
 
-
+  @ViewChild('myGod') gotDetailComponent: GotDetailComponent
   @Input() iGod;  
   @Output() godClicked = new EventEmitter();
   constructor() { }
@@ -17,6 +17,10 @@ export class GodItemComponent implements OnInit {
 
   onGodClick(){
     this.godClicked.emit(this.iGod);
+  }
+
+  invokeDetail(){
+    this.gotDetailComponent.sayHello(this.iGod);
   }
 
 }
